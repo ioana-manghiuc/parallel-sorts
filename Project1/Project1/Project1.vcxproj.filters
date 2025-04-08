@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\L1">
+      <UniqueIdentifier>{da5318b5-4d0e-4ce3-9e0b-ef9324de849e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\L2">
+      <UniqueIdentifier>{9b42faf4-c224-4819-ba64-8c55e0ccf651}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\L3">
+      <UniqueIdentifier>{02e01bb7-4cf9-4435-9ac6-e9a7abb4b506}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\L4">
+      <UniqueIdentifier>{4f017cf6-a7e9-4439-a9f8-3b0559e3c357}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\L5">
+      <UniqueIdentifier>{5989e6be-5154-49ff-beb5-a02727c733f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\L6">
+      <UniqueIdentifier>{a4694f41-0ad9-4e9d-9291-360e64a769f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\L7">
+      <UniqueIdentifier>{03e35d27-b5f0-42e4-81ee-abc0d9b88db6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\aTEMA">
+      <UniqueIdentifier>{2c5c8927-fa43-4c12-82d6-e351bd5cb667}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="lab01.h">
+      <Filter>Header Files\L1</Filter>
+    </ClInclude>
+    <ClInclude Include="lab2_scenario01.h">
+      <Filter>Header Files\L2</Filter>
+    </ClInclude>
+    <ClInclude Include="lab2_scenario02.h">
+      <Filter>Header Files\L2</Filter>
+    </ClInclude>
+    <ClInclude Include="lab2_scenario03.h">
+      <Filter>Header Files\L2</Filter>
+    </ClInclude>
+    <ClInclude Include="lab2_scenario04.h">
+      <Filter>Header Files\L2</Filter>
+    </ClInclude>
+    <ClInclude Include="lab2_scenario05.h">
+      <Filter>Header Files\L2</Filter>
+    </ClInclude>
+    <ClInclude Include="lab2_RockPaperScissors.h">
+      <Filter>Header Files\L2</Filter>
+    </ClInclude>
+    <ClInclude Include="lab3_scenario01.h">
+      <Filter>Header Files\L3</Filter>
+    </ClInclude>
+    <ClInclude Include="lab3_nucleotides.h">
+      <Filter>Header Files\L3</Filter>
+    </ClInclude>
+    <ClInclude Include="lab04.h">
+      <Filter>Header Files\L4</Filter>
+    </ClInclude>
+    <ClInclude Include="lab04_mergesort.h">
+      <Filter>Header Files\L4</Filter>
+    </ClInclude>
+    <ClInclude Include="lab05.h">
+      <Filter>Header Files\L5</Filter>
+    </ClInclude>
+    <ClInclude Include="lab05_sorting_methods.h">
+      <Filter>Header Files\L5</Filter>
+    </ClInclude>
+    <ClInclude Include="lab06.h">
+      <Filter>Header Files\L6</Filter>
+    </ClInclude>
+    <ClInclude Include="lab07.h">
+      <Filter>Header Files\L7</Filter>
+    </ClInclude>
+    <ClInclude Include="direct_sort.h">
+      <Filter>Header Files\aTEMA</Filter>
+    </ClInclude>
+    <ClInclude Include="bucket_sort.h">
+      <Filter>Header Files\aTEMA</Filter>
+    </ClInclude>
+    <ClInclude Include="odd-even_sort.h">
+      <Filter>Header Files\aTEMA</Filter>
+    </ClInclude>
+    <ClInclude Include="ranking_sort.h">
+      <Filter>Header Files\aTEMA</Filter>
+    </ClInclude>
+    <ClInclude Include="shell_sort.h">
+      <Filter>Header Files\aTEMA</Filter>
+    </ClInclude>
+    <ClInclude Include="exec_sorts.h">
+      <Filter>Header Files\aTEMA</Filter>
+    </ClInclude>
+    <ClInclude Include="data_generation.h">
+      <Filter>Header Files\aTEMA</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\..\..\Downloads\nucleotides_1000000000.txt" />
+    <Text Include="..\..\..\..\..\Downloads\nucleotides_100000000.txt" />
+    <Text Include="data.txt">
+      <Filter>Header Files\aTEMA</Filter>
+    </Text>
+    <Text Include="small_data.txt">
+      <Filter>Header Files\aTEMA</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

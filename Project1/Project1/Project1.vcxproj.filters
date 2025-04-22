@@ -112,10 +112,13 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="data.txt">
+    <Text Include="small_data.txt">
       <Filter>Header Files\aTEMA</Filter>
     </Text>
-    <Text Include="small_data.txt">
+    <Text Include="data_10mil.txt">
+      <Filter>Header Files\aTEMA</Filter>
+    </Text>
+    <Text Include="data_1mil.txt">
       <Filter>Header Files\aTEMA</Filter>
     </Text>
   </ItemGroup>

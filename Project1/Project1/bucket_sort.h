@@ -70,17 +70,6 @@ std::vector<int> exchange_buckets(const std::vector<int>& send_buffer, const std
     return local_bucket;
 }
 
-std::vector<int> bucket_sort_local(const std::vector<int>& data, int num_buckets, int max_val) 
-{
-    auto buckets = assign_range_buckets(data, num_buckets, max_val);
-    std::vector<int> sorted;
-    for (auto& bucket : buckets) {
-        insertionSort(bucket);
-        sorted.insert(sorted.end(), bucket.begin(), bucket.end());
-    }
-    return sorted;
-}
-
 std::vector<int> mpi_gather(const std::vector<int>& local_data, int rank, int size) 
 {
     int local_size = local_data.size();
@@ -122,7 +111,7 @@ void MPI_BucketSort(std::vector<int>& global_data, int rank, int size)
     auto [send_buffer, send_counts, send_displs] = flatten(buckets);
 
     auto received_data = exchange_buckets(send_buffer, send_counts, send_displs, size);
-    auto local_sorted = bucket_sort_local(received_data, size, global_max);
+    std::sort(received_data.begin(), received_data.end());
 
-    global_data = mpi_gather(local_sorted, rank, size);
+    global_data = mpi_gather(received_data, rank, size);
 }

@@ -4,6 +4,7 @@
 #include<vector>
 
 #include "direct_sort.h"
+#include "bucket_sort.h"
 
 int main(int argc, char** argv)
 {
@@ -26,7 +27,7 @@ int main(int argc, char** argv)
 
 	double time = MPI_Wtime();
 
-	MPI_DirectSort(smallData, rank, size);
+	MPI_BucketSort(smallData, rank, size);
 
 	time = MPI_Wtime() - time;
 	if (rank == 0)

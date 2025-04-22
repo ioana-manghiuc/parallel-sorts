@@ -43,33 +43,33 @@ void MPI_OddEven(std::vector<int>& arr, int rank, int size)
 
 	std::sort(local_arr.begin(), local_arr.end());
 
-	int sorted = 0;
-	while (!sorted)
+	int is_sorted = 0;
+	while (!is_sorted)
 	{
-		sorted = 1;
+		is_sorted = 1;
 
 		if (rank % 2 == 0 && rank + 1 < size)
 		{
-			compareAndExchange(rank, rank + 1, local_arr, sorted);
+			compareAndExchange(rank, rank + 1, local_arr, is_sorted);
 		}
 		else if (rank % 2 == 1 && rank - 1 >= 0)
 		{
-			compareAndExchange(rank, rank - 1, local_arr, sorted);
+			compareAndExchange(rank, rank - 1, local_arr, is_sorted);
 		}
 
 		MPI_Barrier(MPI_COMM_WORLD);
 
 		if (rank % 2 == 1 && rank + 1 < size)
 		{
-			compareAndExchange(rank, rank + 1, local_arr, sorted);
+			compareAndExchange(rank, rank + 1, local_arr, is_sorted);
 		}
 		else if (rank % 2 == 0 && rank - 1 >= 0)
 		{
-			compareAndExchange(rank, rank - 1, local_arr, sorted);
+			compareAndExchange(rank, rank - 1, local_arr, is_sorted);
 		}
 
 		MPI_Barrier(MPI_COMM_WORLD);
-		MPI_Allreduce(MPI_IN_PLACE, &sorted, 1, MPI_INT, MPI_MIN, MPI_COMM_WORLD);
+		MPI_Allreduce(MPI_IN_PLACE, &is_sorted, 1, MPI_INT, MPI_MIN, MPI_COMM_WORLD);
 	}
 
 	MPI_Gather(local_arr.data(), local_n, MPI_INT, arr.data(), local_n, MPI_INT, 0, MPI_COMM_WORLD);

@@ -112,8 +112,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\..\..\..\Downloads\nucleotides_1000000000.txt" />
-    <Text Include="..\..\..\..\..\Downloads\nucleotides_100000000.txt" />
     <Text Include="data.txt">
       <Filter>Header Files\aTEMA</Filter>
     </Text>

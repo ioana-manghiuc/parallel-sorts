@@ -1,38 +1,42 @@
 ﻿#include<iostream>
-#include<mpi.h>
 
 #include<fstream>
-#include<random>
 #include<vector>
 
-int main()
+#include "direct_sort.h"
+
+int main(int argc, char** argv)
 {
-	srand(time(NULL));
-	int N = 10'000'000;
 	int n = 1'000;
-	std::ofstream small_data_file("small_data.txt", std::ofstream::out);
-	std::ifstream read_small_data("small_data.txt", std::ifstream::in);
+	std::ifstream small_data_file("small_data.txt", std::ifstream::in);
 
-	std::random_device RD; 
-	std::mt19937 engine(RD()); 
-	std::uniform_int_distribution<> distr(0, n - 1);
-
+	std::vector<int>smallData(n);
 	for (size_t i = 0; i < n; i++)
 	{
-		small_data_file << distr(engine) << " ";
-	}
-	std::vector<int>small_data(n);
-	for (size_t i = 0; i < n; i++)
-	{
-		read_small_data >> small_data[i];
-	}
-
-	for (size_t i = 0; i < small_data.size(); i++)
-	{
-		std::cout << small_data[i] << "\n";
+		small_data_file >> smallData[i];
 	}
 
 	small_data_file.close();
-	read_small_data.close();
+
+	int rank, size;
+
+	MPI_Init(&argc, &argv);
+	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+	MPI_Comm_size(MPI_COMM_WORLD, &size);
+
+	double time = MPI_Wtime();
+
+	MPI_DirectSort(smallData, rank, size);
+
+	time = MPI_Wtime() - time;
+	if (rank == 0)
+	{
+		std::cout << "sort took " << time << " seconds.\n";
+		std::cout << std::is_sorted(smallData.begin(), smallData.end());
+	}
+
+
+	MPI_Finalize();
+
 	return 0;
 }

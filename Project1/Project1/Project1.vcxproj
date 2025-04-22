@@ -177,7 +177,7 @@
     <ClInclude Include="lab2_scenario05.h" />
     <ClInclude Include="lab3_nucleotides.h" />
     <ClInclude Include="lab3_scenario01.h" />
-    <ClInclude Include="odd-even_sort.h" />
+    <ClInclude Include="odd_even_sort.h" />
     <ClInclude Include="ranking_sort.h" />
     <ClInclude Include="shell_sort.h" />
   </ItemGroup>

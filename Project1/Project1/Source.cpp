@@ -5,6 +5,9 @@
 
 #include "direct_sort.h"
 #include "bucket_sort.h"
+#include "odd_even_sort.h"
+#include "ranking_sort.h"
+
 
 int main(int argc, char** argv)
 {
@@ -22,7 +25,7 @@ int main(int argc, char** argv)
 	{
 		for (size_t i = 0; i < n; i++)
 		{
-			small_data_file >> smallData[i];
+			small_data_file >> smallData[i]; 
 		}
 
 		std::cout << "Read " << smallData.size() << " elements from file.\n";
@@ -31,7 +34,7 @@ int main(int argc, char** argv)
 
 	double time = MPI_Wtime();
 
-	MPI_BucketSort(smallData, rank, size);
+	MPI_RankingSort(smallData, rank, size);
 
 	time = MPI_Wtime() - time;
 	if (rank == 0)

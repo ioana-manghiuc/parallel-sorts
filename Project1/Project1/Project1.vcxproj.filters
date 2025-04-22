@@ -95,7 +95,7 @@
     <ClInclude Include="bucket_sort.h">
       <Filter>Header Files\aTEMA</Filter>
     </ClInclude>
-    <ClInclude Include="odd-even_sort.h">
+    <ClInclude Include="odd_even_sort.h">
       <Filter>Header Files\aTEMA</Filter>
     </ClInclude>
     <ClInclude Include="ranking_sort.h">

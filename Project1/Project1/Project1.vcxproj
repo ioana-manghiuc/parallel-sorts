@@ -186,6 +186,9 @@
     <Text Include="data_1mil.txt" />
     <Text Include="small_data.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="sort_times.json" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

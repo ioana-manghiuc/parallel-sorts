@@ -122,4 +122,9 @@
       <Filter>Header Files\aTEMA</Filter>
     </Text>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="sort_times.json">
+      <Filter>Header Files\aTEMA</Filter>
+    </None>
+  </ItemGroup>
 </Project>

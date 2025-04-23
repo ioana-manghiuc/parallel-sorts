@@ -19,29 +19,32 @@ int main(int argc, char** argv)
 	MPI_Comm_size(MPI_COMM_WORLD, &size);
 
 	int n = 1'000'000;
-	std::ifstream small_data_file("data_1mil.txt", std::ifstream::in);
+	std::ifstream data_file("data_1mil.txt", std::ifstream::in);
 
-	std::vector<int>smallData(n);
+	std::vector<int>data(n);
 	if (rank == 0)
 	{
 		for (size_t i = 0; i < n; i++)
 		{
-			small_data_file >> smallData[i]; 
+			data_file >> data[i];
 		}
 
-		std::cout << "Read " << smallData.size() << " elements from file.\n";
-		small_data_file.close();
+		std::cout << "Read " << data.size() << " elements from file.\n";
+		data_file.close();
 	}
 
-	double time = MPI_Wtime();
+	double computation_time = 0.0, communication_time = 0.0;
+	double execution_time = MPI_Wtime();
 
-	MPI_ShellSort(smallData, rank, size);
+	MPI_BucketSort(data, rank, size, computation_time, communication_time);
 
-	time = MPI_Wtime() - time;
+	execution_time = MPI_Wtime() - execution_time;
 	if (rank == 0)
 	{
-		std::cout << "sort took " << time << " seconds.\n";
-		std::cout << std::is_sorted(smallData.begin(), smallData.end());
+		std::cout << "EXECUTION TIME: " << execution_time << "\n";
+		std::cout << "COMPUTATION TIME: " << computation_time << "\n";
+		std::cout << "COMMUNICATION TIME: " << communication_time << "\n";
+		std::cout << std::is_sorted(data.begin(), data.end());
 	}
 
 	MPI_Finalize();

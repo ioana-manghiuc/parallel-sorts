@@ -37,30 +37,37 @@ std::vector<int> collate_arrays(const std::vector<int>& a, const std::vector<int
 	return result;
 }
 
-void MPI_DirectSort(std::vector<int>& global_data, int rank, int size)
+void MPI_DirectSort(std::vector<int>& global_data, int rank, int size, double& computation_time, double& communication_time)
 {
+	double start_time = 0.0;
 	int global_size = global_data.size();
 	int local_size = global_size / size;
 
 	std::vector<int> local_data(local_size);
 
+	start_time = MPI_Wtime();
 	MPI_Scatter(global_data.data(), local_size, MPI_INT,
 		local_data.data(), local_size, MPI_INT,
 		0, MPI_COMM_WORLD);
+	communication_time += MPI_Wtime() - start_time;
 
+	start_time = MPI_Wtime();
 	DirectSort(local_data);
+	computation_time += MPI_Wtime() - start_time;
 
 	std::vector<int> gathered_data;
-	if (rank == 0)
-		gathered_data.resize(global_size);
+	if (rank == 0) gathered_data.resize(global_size);
 
+	start_time = MPI_Wtime();
 	MPI_Gather(local_data.data(), local_size, MPI_INT,
 		rank == 0 ? gathered_data.data() : nullptr,
-		local_size, MPI_INT,
-		0, MPI_COMM_WORLD);
+		local_size, MPI_INT, 0, MPI_COMM_WORLD);
+	communication_time += MPI_Wtime() - start_time;
 
 	if (rank == 0)
 	{
+		start_time = MPI_Wtime();
+
 		global_data.assign(gathered_data.begin(), gathered_data.begin() + local_size);
 
 		for (int i = 1; i < size; ++i)
@@ -69,5 +76,7 @@ void MPI_DirectSort(std::vector<int>& global_data, int rank, int size)
 				gathered_data.begin() + (i + 1) * local_size);
 			global_data = collate_arrays(global_data, temp);
 		}
+
+		computation_time += MPI_Wtime() - start_time;
 	}
 }

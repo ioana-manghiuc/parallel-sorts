@@ -5,21 +5,6 @@
 #include <numeric>
 #include <tuple>
 
-void insertionSort(std::vector<int>& bucket) 
-{
-    for (int i = 1; i < bucket.size(); ++i) 
-    {
-        int key = bucket[i];
-        int j = i - 1;
-        while (j >= 0 && bucket[j] > key) 
-        {
-            bucket[j + 1] = bucket[j];
-            j--;
-        }
-        bucket[j + 1] = key;
-    }
-}
-
 std::vector<std::vector<int>> assign_range_buckets(const std::vector<int>& data, int num_buckets, int max_val) 
 {
     std::vector<std::vector<int>> buckets(num_buckets);
@@ -48,70 +33,102 @@ std::tuple<std::vector<int>, std::vector<int>, std::vector<int>> flatten(const s
     return { flat_buffer, elements_per_bucket, bucket_start_indexes };
 }
 
-std::vector<int> exchange_buckets(const std::vector<int>& send_buffer, const std::vector<int>& send_counts, const std::vector<int>& send_displs, int size) 
+std::vector<int> exchange_buckets(const std::vector<int>& send_buffer, const std::vector<int>& send_counts, const std::vector<int>& send_displs, int size,
+                                    double& computation_time, double& communication_time)
 {
+    double start_time = 0.0;
+
+    start_time = MPI_Wtime();
     std::vector<int> recv_counts(size);
     MPI_Alltoall(send_counts.data(), 1, MPI_INT,
         recv_counts.data(), 1, MPI_INT,
         MPI_COMM_WORLD);
+    communication_time += MPI_Wtime() - start_time;
 
+    start_time = MPI_Wtime();
     std::vector<int> recv_displs(size);
     int total_recv = 0;
     for (int i = 0; i < size; ++i) {
         recv_displs[i] = total_recv;
         total_recv += recv_counts[i];
     }
+    computation_time += MPI_Wtime() - start_time;
 
+    start_time = MPI_Wtime();
     std::vector<int> local_bucket(total_recv);
     MPI_Alltoallv(send_buffer.data(), send_counts.data(), send_displs.data(), MPI_INT,
         local_bucket.data(), recv_counts.data(), recv_displs.data(), MPI_INT,
         MPI_COMM_WORLD);
+    communication_time += MPI_Wtime() - start_time;
 
     return local_bucket;
 }
 
-std::vector<int> mpi_gather(const std::vector<int>& local_data, int rank, int size) 
+std::vector<int> mpi_gather(const std::vector<int>& local_data, int rank, int size,
+                            double& computation_time, double& communication_time)
 {
+    double start_time = 0.0;
     int local_size = local_data.size();
     std::vector<int> recv_sizes(size);
+
+    start_time = MPI_Wtime();
     MPI_Gather(&local_size, 1, MPI_INT, recv_sizes.data(), 1, MPI_INT, 0, MPI_COMM_WORLD);
+    communication_time += MPI_Wtime() - start_time;
 
     std::vector<int> recv_offsets(size);
     int total_size = 0;
     if (rank == 0) 
     {
+        start_time = MPI_Wtime();
         for (int i = 0; i < size; ++i) 
         {
             recv_offsets[i] = total_size;
             total_size += recv_sizes[i];
         }
+        computation_time += MPI_Wtime() - start_time;
     }
 
     std::vector<int> global_data(rank == 0 ? total_size : 0);
+
+    start_time = MPI_Wtime();
     MPI_Gatherv(local_data.data(), local_size, MPI_INT,
         global_data.data(), recv_sizes.data(), recv_offsets.data(), MPI_INT,
         0, MPI_COMM_WORLD);
+    communication_time += MPI_Wtime() - start_time;
 
     return global_data;
 }
 
-void MPI_BucketSort(std::vector<int>& global_data, int rank, int size) 
+void MPI_BucketSort(std::vector<int>& global_data, int rank, int size, double& computation_time, double& communication_time)
 {
+    double start_time = 0.0;
     int global_size = global_data.size();
     int local_size = global_size / size;
     std::vector<int> local_data(local_size);
 
+    start_time = MPI_Wtime();
     MPI_Scatter(global_data.data(), local_size, MPI_INT, local_data.data(), local_size, MPI_INT, 0, MPI_COMM_WORLD);
+    communication_time += MPI_Wtime() - start_time;
 
+    start_time = MPI_Wtime();
     int local_max = *std::max_element(local_data.begin(), local_data.end());
-    int global_max;
-    MPI_Allreduce(&local_max, &global_max, 1, MPI_INT, MPI_MAX, MPI_COMM_WORLD);
+    computation_time += MPI_Wtime() - start_time;
 
+    int global_max;
+    start_time = MPI_Wtime();
+    MPI_Allreduce(&local_max, &global_max, 1, MPI_INT, MPI_MAX, MPI_COMM_WORLD);
+    communication_time += MPI_Wtime() - start_time;
+
+    start_time = MPI_Wtime();
     auto buckets = assign_range_buckets(local_data, size, global_max);
     auto [send_buffer, send_counts, send_displs] = flatten(buckets);
+    computation_time += MPI_Wtime() - start_time;
 
-    auto received_data = exchange_buckets(send_buffer, send_counts, send_displs, size);
+    auto received_data = exchange_buckets(send_buffer, send_counts, send_displs, size, computation_time, communication_time);
+
+    start_time = MPI_Wtime();
     std::sort(received_data.begin(), received_data.end());
+    computation_time += MPI_Wtime() - start_time;
 
-    global_data = mpi_gather(received_data, rank, size);
+    global_data = mpi_gather(received_data, rank, size, computation_time, communication_time);
 }

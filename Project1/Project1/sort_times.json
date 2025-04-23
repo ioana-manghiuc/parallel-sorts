@@ -1,0 +1,9 @@
+[
+  {
+    "algorithm": "Bucket Sort",
+    "data size": 1000000,
+    "execution time": 0.348963,
+    "computation time": 0.342014,
+    "communication time": 0.0049728
+  }
+]

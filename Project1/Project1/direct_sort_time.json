@@ -22,5 +22,55 @@
     "execution time": 138.478,
     "computation time": 137.347,
     "communication time": 1.12929
+  },
+
+  {
+    "algorithm": "Direct Sort",
+    "data size": 1000000,
+    "cores": 4,
+    "execution time": 462.747,
+    "computation time": 460.397,
+    "communication time": 2.34866
+  },
+  {
+    "algorithm": "Direct Sort",
+    "data size": 1000000,
+    "cores": 4,
+    "execution time": 360.682,
+    "computation time": 360.679,
+    "communication time": 2.31723
+  },
+  {
+    "algorithm": "Direct Sort",
+    "data size": 1000000,
+    "cores": 4,
+    "execution time": 521.992,
+    "computation time": 519.621,
+    "communication time": 2.36876
+  },
+
+  {
+    "algorithm": "Direct Sort",
+    "data size": 1000000,
+    "cores": 2,
+    "execution time": 1435.58,
+    "computation time": 1435.34,
+    "communication time": 0.238449
+  },
+  {
+    "algorithm": "Direct Sort",
+    "data size": 1000000,
+    "cores": 2,
+    "execution time": 1311.69,
+    "computation time": 1311.69,
+    "communication time": 0.0012313
+  },
+  {
+    "algorithm": "Direct Sort",
+    "data size": 1000000,
+    "cores": 2,
+    "execution time": 1342.55,
+    "computation time": 1340.84,
+    "communication time": 1.7028
   }
 ]

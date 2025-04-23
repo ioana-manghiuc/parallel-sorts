@@ -123,7 +123,10 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <None Include="sort_times.json">
+    <None Include="bucket_sort_times.json">
+      <Filter>Header Files\aTEMA</Filter>
+    </None>
+    <None Include="direct_sort_time.json">
       <Filter>Header Files\aTEMA</Filter>
     </None>
   </ItemGroup>

@@ -18,7 +18,7 @@ void DirectSort(std::vector<int>& data)
 	}
 }
 
-std::vector<int> collate_arrays(const std::vector<int>& a, const std::vector<int>& b)
+std::vector<int> collate_arrays(std::vector<int>&& a, std::vector<int>&& b)
 {
 	std::vector<int> result;
 	result.reserve(a.size() + b.size());
@@ -27,12 +27,13 @@ std::vector<int> collate_arrays(const std::vector<int>& a, const std::vector<int
 	while (i < a.size() && j < b.size())
 	{
 		if (a[i] < b[j])
-			result.push_back(a[i++]);
+			result.push_back(std::move(a[i++]));
 		else
-			result.push_back(b[j++]);
+			result.push_back(std::move(b[j++]));
 	}
-	while (i < a.size()) result.push_back(a[i++]);
-	while (j < b.size()) result.push_back(b[j++]);
+
+	while (i < a.size()) result.push_back(std::move(a[i++]));
+	while (j < b.size()) result.push_back(std::move(b[j++]));
 
 	return result;
 }
@@ -68,15 +69,32 @@ void MPI_DirectSort(std::vector<int>& global_data, int rank, int size, double& c
 	{
 		start_time = MPI_Wtime();
 
-		global_data.assign(gathered_data.begin(), gathered_data.begin() + local_size);
-
-		for (int i = 1; i < size; ++i)
+		std::vector<std::vector<int>> chunks(size);
+		for (int i = 0; i < size; ++i)
 		{
-			std::vector<int> temp(gathered_data.begin() + i * local_size,
+			chunks[i] = std::vector<int>(gathered_data.begin() + i * local_size,
 				gathered_data.begin() + (i + 1) * local_size);
-			global_data = collate_arrays(global_data, temp);
 		}
 
+		while (chunks.size() > 1)
+		{
+			std::vector<std::vector<int>> new_chunks;
+			for (size_t i = 0; i < chunks.size(); i += 2)
+			{
+				if (i + 1 < chunks.size())
+				{
+					new_chunks.push_back(collate_arrays(std::move(chunks[i]), std::move(chunks[i + 1])));
+				}
+				else
+				{
+					new_chunks.push_back(chunks[i]);
+				}
+			}
+			chunks = std::move(new_chunks);
+		}
+
+		global_data = std::move(chunks[0]);
 		computation_time += MPI_Wtime() - start_time;
 	}
+
 }

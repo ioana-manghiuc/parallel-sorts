@@ -1,0 +1,26 @@
+[
+  {
+    "algorithm": "Direct Sort",
+    "data size": 1000000,
+    "cores": 8,
+    "execution time": 101.841,
+    "computation time": 101.541,
+    "communication time": 0.297848
+  },
+  {
+    "algorithm": "Direct Sort",
+    "data size": 1000000,
+    "cores": 8,
+    "execution time": 124.074,
+    "computation time": 122.728,
+    "communication time": 1.34468
+  },
+  {
+    "algorithm": "Direct Sort",
+    "data size": 1000000,
+    "cores": 8,
+    "execution time": 138.478,
+    "computation time": 137.347,
+    "communication time": 1.12929
+  }
+]

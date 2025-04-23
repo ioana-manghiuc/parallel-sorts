@@ -18,8 +18,8 @@ int main(int argc, char** argv)
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 	MPI_Comm_size(MPI_COMM_WORLD, &size);
 
-	int n = 1'000'000;
-	std::ifstream data_file("data_1mil.txt", std::ifstream::in);
+	int n = 10'000'000;
+	std::ifstream data_file("data_10mil.txt", std::ifstream::in);
 
 	std::vector<int>data(n);
 	if (rank == 0)

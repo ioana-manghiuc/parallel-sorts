@@ -187,7 +187,8 @@
     <Text Include="small_data.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="sort_times.json" />
+    <None Include="direct_sort_time.json" />
+    <None Include="bucket_sort_times.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,155 @@
+[
+  // 1 MIL
+  {
+    "algorithm": "Bucket Sort",
+    "data size": 1000000,
+    "cores": 8,
+    "execution time": 0.348963,
+    "computation time": 0.342014,
+    "communication time": 0.0049728
+  },
+  {
+    "algorithm": "Bucket Sort",
+    "data size": 1000000,
+    "cores": 8,
+    "execution time": 0.362234,
+    "computation time": 0.355027,
+    "communication time": 0.0050962
+  },
+  {
+    "algorithm": "Bucket Sort",
+    "data size": 1000000,
+    "cores": 8,
+    "execution time": 0.356924,
+    "computation time": 0.344396,
+    "communication time": 0.0105488
+  },
+
+  {
+    "algorithm": "Bucket Sort",
+    "data size": 1000000,
+    "cores": 4,
+    "execution time": 0.369947,
+    "computation time": 0.360363,
+    "communication time": 0.0072893
+  },
+  {
+    "algorithm": "Bucket Sort",
+    "data size": 1000000,
+    "cores": 4,
+    "execution time": 0.360507,
+    "computation time": 0.354747,
+    "communication time": 0.0034577
+  },
+  {
+    "algorithm": "Bucket Sort",
+    "data size": 1000000,
+    "cores": 4,
+    "execution time": 0.362048,
+    "computation time": 0.35565,
+    "communication time": 0.004141
+  },
+
+  {
+    "algorithm": "Bucket Sort",
+    "data size": 1000000,
+    "cores": 2,
+    "execution time": 0.374329,
+    "computation time": 0.369164,
+    "communication time": 0.0025128
+  },
+  {
+    "algorithm": "Bucket Sort",
+    "data size": 1000000,
+    "cores": 2,
+    "execution time": 0.368792,
+    "computation time": 0.364334,
+    "communication time": 0.0023298
+  },
+  {
+    "algorithm": "Bucket Sort",
+    "data size": 1000000,
+    "cores": 2,
+    "execution time": 0.36999,
+    "computation time": 0.364954,
+    "communication time": 0.0023744
+  },
+
+  // 10 MIL
+
+  {
+    "algorithm": "Bucket Sort",
+    "data size": 10000000,
+    "cores": 8,
+    "execution time": 4.17184,
+    "computation time": 4.11901,
+    "communication time": 0.038731
+  },
+  {
+    "algorithm": "Bucket Sort",
+    "data size": 10000000,
+    "cores": 8,
+    "execution time": 4.13118,
+    "computation time": 4.06617,
+    "communication time": 0.0550711
+  },
+  {
+    "algorithm": "Bucket Sort",
+    "data size": 10000000,
+    "cores": 8,
+    "execution time": 4.13967,
+    "computation time": 4.08679,
+    "communication time": 0.0413536
+  },
+
+  {
+    "algorithm": "Bucket Sort",
+    "data size": 10000000,
+    "cores": 4,
+    "execution time": 4.1921,
+    "computation time": 4.15086,
+    "communication time": 0.028771
+  },
+  {
+    "algorithm": "Bucket Sort",
+    "data size": 10000000,
+    "cores": 4,
+    "execution time": 4.189,
+    "computation time": 4.15473,
+    "communication time": 0.0214581
+  },
+  {
+    "algorithm": "Bucket Sort",
+    "data size": 10000000,
+    "cores": 4,
+    "execution time": 4.47079,
+    "computation time": 4.43848,
+    "communication time": 0.0195564
+  },
+
+  {
+    "algorithm": "Bucket Sort",
+    "data size": 10000000,
+    "cores": 2,
+    "execution time": 4.44484,
+    "computation time": 4.40238,
+    "communication time": 0.0249644
+  },
+  {
+    "algorithm": "Bucket Sort",
+    "data size": 10000000,
+    "cores": 2,
+    "execution time": 4.42754,
+    "computation time": 4.38871,
+    "communication time": 0.0195519
+  },
+  {
+    "algorithm": "Bucket Sort",
+    "data size": 10000000,
+    "cores": 2,
+    "execution time": 4.44286,
+    "computation time": 4.40592,
+    "communication time": 0.0178908
+  }
+]
+

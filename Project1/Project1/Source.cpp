@@ -36,7 +36,7 @@ int main(int argc, char** argv)
 	double computation_time = 0.0, communication_time = 0.0;
 	double execution_time = MPI_Wtime();
 
-	MPI_OddEven(data, rank, size, computation_time, communication_time);
+	MPI_ShellSort(data, rank, size, computation_time, communication_time);
 
 	execution_time = MPI_Wtime() - execution_time;
 	if (rank == 0)

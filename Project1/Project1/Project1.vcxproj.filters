@@ -132,5 +132,8 @@
     <None Include="odd_even_times.json">
       <Filter>Header Files\aTEMA</Filter>
     </None>
+    <None Include="shell_sort_times.json">
+      <Filter>Header Files\aTEMA</Filter>
+    </None>
   </ItemGroup>
 </Project>

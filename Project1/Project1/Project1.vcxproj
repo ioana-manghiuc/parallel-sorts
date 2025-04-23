@@ -190,8 +190,14 @@
     <None Include="direct_sort_time.json" />
     <None Include="bucket_sort_times.json" />
     <None Include="odd_even_times.json" />
+    <None Include="shell_sort_times.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties shell_3sort_3times_1json__JsonSchema="https://carafe.fm/schema/draft-02/bundle.schema.json" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

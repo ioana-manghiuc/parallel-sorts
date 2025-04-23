@@ -1,0 +1,154 @@
+[
+  // 1 MIL
+  {
+    "algorithm": "Odd Even Sort",
+    "data size": 1000000,
+    "cores": 8,
+    "execution time": 0.126923,
+    "computation time": 0.0533552,
+    "communication time": 0.0265541
+  },
+  {
+    "algorithm": "Odd Even Sort",
+    "data size": 1000000,
+    "cores": 8,
+    "execution time": 0.11382,
+    "computation time": 0.0488368,
+    "communication time": 0.0245451
+  },
+  {
+    "algorithm": "Odd Even Sort",
+    "data size": 1000000,
+    "cores": 8,
+    "execution time": 0.115237,
+    "computation time": 0.0470248,
+    "communication time": 0.0296468
+  },
+
+  {
+    "algorithm": "Odd Even Sort",
+    "data size": 1000000,
+    "cores": 4,
+    "execution time": 0.143749,
+    "computation time": 0.0883962,
+    "communication time": 0.0313318
+  },
+  {
+    "algorithm": "Odd Even Sort",
+    "data size": 1000000,
+    "cores": 4,
+    "execution time": 0.136588,
+    "computation time": 0.0816625,
+    "communication time": 0.0245181
+  },
+  {
+    "algorithm": "Odd Even Sort",
+    "data size": 1000000,
+    "cores": 4,
+    "execution time": 0.141281,
+    "computation time": 0.0906397,
+    "communication time": 0.0245264
+  },
+
+  {
+    "algorithm": "Odd Even Sort",
+    "data size": 1000000,
+    "cores": 2,
+    "execution time": 0.203022,
+    "computation time": 0.169429,
+    "communication time": 0.0284726
+  },
+  {
+    "algorithm": "Odd Even Sort",
+    "data size": 1000000,
+    "cores": 2,
+    "execution time": 0.204297,
+    "computation time": 0.170137,
+    "communication time": 0.0271901
+  },
+  {
+    "algorithm": "Odd Even Sort",
+    "data size": 1000000,
+    "cores": 2,
+    "execution time": 0.20222,
+    "computation time": 0.168313,
+    "communication time": 0.0288998
+  },
+
+  // 10 MIL
+
+  {
+    "algorithm": "Odd Even Sort",
+    "data size": 10000000,
+    "cores": 8,
+    "execution time": 1.21149,
+    "computation time": 0.530941,
+    "communication time": 0.27321
+  },
+  {
+    "algorithm": "Odd Even Sort",
+    "data size": 10000000,
+    "cores": 8,
+    "execution time": 1.60533,
+    "computation time": 0.823481,
+    "communication time": 0.321144
+  },
+  {
+    "algorithm": "Odd Even Sort",
+    "data size": 10000000,
+    "cores": 8,
+    "execution time": 1.20826,
+    "computation time": 0.532383,
+    "communication time": 0.291041
+  },
+
+  {
+    "algorithm": "Odd Even Sort",
+    "data size": 10000000,
+    "cores": 4,
+    "execution time": 1.61296,
+    "computation time": 1.03227,
+    "communication time": 0.289638
+  },
+  {
+    "algorithm": "Odd Even Sort",
+    "data size": 10000000,
+    "cores": 4,
+    "execution time": 1.91337,
+    "computation time": 1.12219,
+    "communication time": 0.419559
+  },
+  {
+    "algorithm": "Odd Even Sort",
+    "data size": 10000000,
+    "cores": 4,
+    "execution time": 1.61772,
+    "computation time": 1.0686,
+    "communication time": 0.275457
+  },
+
+  {
+    "algorithm": "Odd Even Sort",
+    "data size": 10000000,
+    "cores": 2,
+    "execution time": 2.29512,
+    "computation time": 1.96192,
+    "communication time": 0.282614
+  },
+  {
+    "algorithm": "Odd Even Sort",
+    "data size": 10000000,
+    "cores": 2,
+    "execution time": 3.48884,
+    "computation time": 2.98204,
+    "communication time": 0.451242
+  },
+  {
+    "algorithm": "Odd Even Sort",
+    "data size": 10000000,
+    "cores": 2,
+    "execution time": 2.37936,
+    "computation time": 2.02593,
+    "communication time": 0.278151
+  }
+]

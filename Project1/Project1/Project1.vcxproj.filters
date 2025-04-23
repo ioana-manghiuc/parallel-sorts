@@ -135,5 +135,8 @@
     <None Include="shell_sort_times.json">
       <Filter>Header Files\aTEMA</Filter>
     </None>
+    <None Include="ranking_sort_time.json">
+      <Filter>Header Files\aTEMA</Filter>
+    </None>
   </ItemGroup>
 </Project>

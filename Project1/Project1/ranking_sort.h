@@ -21,13 +21,14 @@ void MPI_RankingSort(std::vector<int>& data, int rank, int size, double& computa
     full_data = data;
 
     start_time = MPI_Wtime();
-    for (int i = 0; i < local_n; ++i) 
+    for (int i = 0; i < local_n; ++i)
     {
         int global_i = i + rank * local_n;
         ranking[i] = 0;
-        for (int j = 0; j < n; ++j) 
+        for (int j = 0; j < n; ++j)
         {
-            if (full_data[j] < full_data[global_i]) 
+            if (full_data[j] < full_data[global_i] ||
+                (full_data[j] == full_data[global_i] && j < global_i))
             {
                 ranking[i]++;
             }
@@ -43,7 +44,7 @@ void MPI_RankingSort(std::vector<int>& data, int rank, int size, double& computa
     {
         start_time = MPI_Wtime();
         std::vector<int> sorted(n);
-        for (int i = 0; i < n; ++i) 
+        for (int i = 0; i < n; ++i)
         {
             sorted[overall_ranking[i]] = full_data[i];
         }

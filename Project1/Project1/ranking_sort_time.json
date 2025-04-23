@@ -1,0 +1,28 @@
+[
+  {
+    "algorithm": "Ranking Sort",
+    "data size": 1000000,
+    "cores": 8,
+    "execution time": 2337.14,
+    "computation time": 2331.05,
+    "communication time": 6.08485
+  },
+
+  {
+    "algorithm": "Ranking Sort",
+    "data size": 1000000,
+    "cores": 4,
+    "execution time": 3966.48,
+    "computation time": 3966.47,
+    "communication time": 0.003315
+  },
+
+  {
+    "algorithm": "Direct Sort",
+    "data size": 1000000,
+    "cores": 2,
+    "execution time": 7613.37,
+    "computation time": 7613.36,
+    "communication time": 0.0033229
+  }
+]

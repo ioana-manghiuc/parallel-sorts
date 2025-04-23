@@ -41,7 +41,7 @@ void compareAndExchange(int rank, int partner, std::vector<int>& local_data, int
 	computation_time += MPI_Wtime() - start_time;
 }
 
-void MPI_OddEven(std::vector<int>& arr, int rank, int size, double& computation_time, double& communication_time)
+void MPI_OddEvenSort(std::vector<int>& arr, int rank, int size, double& computation_time, double& communication_time)
 {
 	double start_time = 0.0;
 	int n = arr.size();

@@ -3,11 +3,6 @@
 #include <algorithm>
 #include <mpi.h>
 
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <mpi.h>
-
 void compareAndExchange(int rank, int partner, std::vector<int>& local_data, int& sorted_flag,
 						double& computation_time, double& communication_time) 
 {

@@ -48,7 +48,8 @@ std::vector<int> exchange_buckets(const std::vector<int>& send_buffer, const std
     start_time = MPI_Wtime();
     std::vector<int> recv_displs(size);
     int total_recv = 0;
-    for (int i = 0; i < size; ++i) {
+    for (int i = 0; i < size; ++i) 
+    {
         recv_displs[i] = total_recv;
         total_recv += recv_counts[i];
     }

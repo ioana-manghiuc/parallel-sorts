@@ -64,8 +64,8 @@ void MPI_ShellSort(std::vector<int>& data, int rank, int size, double& computati
         MPI_Barrier(MPI_COMM_WORLD);
     }
 
-    int global_sorted = 0;
-    while (!global_sorted)
+    int is_sorted = 0;
+    while (!is_sorted)
     {
         bool changed = false;
 
@@ -92,7 +92,7 @@ void MPI_ShellSort(std::vector<int>& data, int rank, int size, double& computati
         MPI_Barrier(MPI_COMM_WORLD);
         int local_sorted = changed ? 0 : 1;
         start_time = MPI_Wtime();
-        MPI_Allreduce(&local_sorted, &global_sorted, 1, MPI_INT, MPI_MIN, MPI_COMM_WORLD);
+        MPI_Allreduce(&local_sorted, &is_sorted, 1, MPI_INT, MPI_MIN, MPI_COMM_WORLD);
         communication_time += MPI_Wtime() - start_time;
     }
 
